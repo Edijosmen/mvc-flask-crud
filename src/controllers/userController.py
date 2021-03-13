@@ -18,8 +18,8 @@ def createUser():
     celular = request.json['celular']
     correo = request.json['correo']
     contrasena = request.json['contrasena']
-
     usuarioModel.crearUser(nombre,apellido,celular,correo,contrasena)
+
     print("inof------------ ", request_data)
     print(request_data['nombre'])
     return 'OK'
@@ -34,4 +34,9 @@ def apdate(id):
     correo = request_data['correo']
     contrasena = request_data['contrasena']
     usuarioModel.update(id,nombre,apellido,celular,correo,contrasena)
-    return correo
+    return "ok"
+@app.route("/delete/<id>",methods=["DELETE"])
+def deleteUser(id):
+    usuarioModel = UsuarioModel()
+    usuarioModel.delete(id)
+    return "ok"
